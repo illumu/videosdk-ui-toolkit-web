@@ -92,7 +92,7 @@
       "prettier --write"
     ]
   },
-  "name": "videosdk-ui-toolkit",
+  "name": "@vinay.kumar.ha/videosdk-ui-toolkit",
   "private": true,
   "scripts": {
     "dev": "npm run copy && cross-env vite",
@@ -112,5 +112,5 @@
     "test:ci": "vitest run"
   },
   "type": "module",
-  "version": "2.3.5-1"
+  "version": "2.3.5-1.1"
 }

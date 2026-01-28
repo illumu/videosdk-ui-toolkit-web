@@ -73,6 +73,7 @@ const GalleryView = ({ isSidePanelOpen, mainContentHeight }: GalleryViewPros) =>
     [defaultGridClassName, isScreenSharing, isWhiteboardOpen],
   );
   const canvasWidth = (mainContentHeight / 9) * 16;
+  const maxWidth = currentParticipants.length === 2 ? canvasWidth + 350 : canvasWidth - 50;
 
   const userIconSize = useMemo(() => {
     if (isScreenSharing || isWhiteboardOpen) {
@@ -127,7 +128,7 @@ const GalleryView = ({ isSidePanelOpen, mainContentHeight }: GalleryViewPros) =>
         <span className="text-xs text-theme-text mt-1">{`${currentPage + 1} / ${totalPages}`}</span>
       </div>
       <div className={`flex flex-col items-center ${isSidePanelOpen ? "w-4/5 max-w-4xl" : "w-full max-w-full"}`}>
-        <div className="w-full overflow-hidden relative" style={{ maxWidth: `${canvasWidth - 50}px` }}>
+        <div className="w-full overflow-hidden relative" style={{ maxWidth: `${maxWidth}px` }}>
           <video-player-container>
             <div className={gridClassName}>
               {currentParticipants.map((participant: Participant, idx: number) => {
