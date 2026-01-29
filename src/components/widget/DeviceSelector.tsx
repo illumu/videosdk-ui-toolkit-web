@@ -43,11 +43,11 @@ const DeviceSelector: React.FC<DeviceSelectorProps> = ({
   };
 
   return (
-    <div className={`w-1/3 ${themeColorClass} px-1`}>
+    <div className={`w-full`}>
       <div className="flex flex-col gap-2">
         <div className="relative">
-          <div className="absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-            <div className="rounded-full p-1">{getDeviceIcon()}</div>
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10 text-white">
+          {getDeviceIcon()}
           </div>
           <select
             value={value}
@@ -56,13 +56,13 @@ const DeviceSelector: React.FC<DeviceSelectorProps> = ({
                 onChange(e.target.value);
               }
             }}
-            className={`py-2 pr-2 text-sm rounded border transition-colors duration-200 w-full appearance-none ${
+            className={`py-3 pr-3 text-sm rounded border transition-colors duration-200 w-full appearance-none ${
               disabled
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             } ${themeColorClass}`}
             style={{
-              paddingLeft: "2.5rem",
+              paddingLeft: "3rem",
               textOverflow: "ellipsis",
             }}
             id={id}
@@ -76,7 +76,7 @@ const DeviceSelector: React.FC<DeviceSelectorProps> = ({
             ))}
           </select>
         </div>
-        {clickIcon && (
+        {/* {clickIcon && (
           <Button
             variant="outline"
             size="xs"
@@ -87,7 +87,7 @@ const DeviceSelector: React.FC<DeviceSelectorProps> = ({
           >
             {testTitle}
           </Button>
-        )}
+        )} */}
       </div>
     </div>
   );
