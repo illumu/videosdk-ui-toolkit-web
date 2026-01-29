@@ -541,7 +541,7 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
   }, [audioState.isMuted, audioState.isStarted, isPlayingRecording, isRecordingVoice, isTestSpeaker]);
 
   const themeColorClass = themeName === "dark" ? "bg-theme-surface" : "text-black bg-theme-surface";
-  const borderColor = themeName === "dark" ? "border-solid border border-gray-100 rounded-lg" : "border-gray-200";
+  const borderColor = themeName === "dark" ? "border-solid  border-gray-100 rounded-lg" : "border-gray-200";
   const vbButton = isSupportVirtualBackground && (
     <div className="absolute right-2">
       <div
@@ -590,34 +590,30 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
 
   const aspectStyle = isPortraitDevice ? "aspect-[3/4]" : "aspect-video";
   return (
-    <div
-      className={`${THEME_COLOR_CLASS} flex flex-col items-center justify-center w-full min-h-[100dvh] max-h-[100dvh] overflow-y-auto`}
-    >
-      <div
-        className={`rounded-lg shadow-lg py-4 px-6 w-full ${isMobileDevice() ? "max-w-md" : "max-w-[800px] min-w-[300px]"} max-h-[100dvh] overflow-y-auto my-auto ${borderColor}`}
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center" id="uikit-preview-title">
+    <div className={`min-h-[100dvh] w-full bg-[#1C1C1C] flex flex-col items-center pt-8`}>
+      <div className={`w-full ${isMobileDevice() ? "max-w-md" : "max-w-[880px]"} px-6 flex flex-col items-center`}>
+        <div className="w-full max-w-[560px] bg-[#2A2E35] rounded-2xl shadow-lg pt-6 pb-2 px-4 mb-6">
+        <h2 className="text-xl font-medium text-center mb-4 text-white tracking-tight" id="uikit-preview-title">
           What&apos;s your name?
         </h2>
         {/* Name and Avatar Input */}
-        <div className="mb-4 flex items-center justify-center">
-          <div className={`w-2/3 relative ${themeColorClass}`}>
+          <div className={`relative mb-4`}>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
-              className={`w-full p-2 pl-10 pr-10 border rounded focus:ring-2 focus:ring-blue-500 ${themeColorClass}`}
+              className={`w-full bg-white rounded-full py-2 pl-10 pr-10 text-gray-800 text-sm focus:outline-none`}
               id="uikit-preview-name-input"
               maxLength={300}
               autoFocus={isAllowModifyName}
               disabled={!isAllowModifyName}
               autoComplete="off"
             />
-            <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 ${themeColorClass}`} />
+            <User className={`absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4`} />
             {isAllowModifyName && (
               <X
-                className={`absolute right-3 top-1/2 transform -translate-y-1/2  cursor-pointer ${themeColorClass}`}
+                className={`absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 h-4 w-4`}
                 onClick={() => {
                   setName("");
                   localStorage.removeItem(LOCALSTORAGE_KEYS.UIKIT_USERNAME);
@@ -625,46 +621,22 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
               />
             )}
           </div>
-          {/* {selectedAvatar ? (
-            <div
-              className="flex items-center rounded-lg bg-gray-100 h-10 w-10 hover:bg-gray-200 cursor-pointer"
-              onClick={() => setIsAvatarPickerOpen(true)}
-              ref={avatarButtonRef}
-              title="Change Avatar"
-              id="uikit-preview-avatar-button"
-            >
-              <img
-                src={selectedAvatar.url}
-                alt={selectedAvatar.description}
-                className="w-full h-full rounded-lg object-cover"
-              />
-            </div>
-          ) : (
-            <div
-              ref={avatarButtonRef}
-              onClick={() => setIsAvatarPickerOpen(true)}
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 w-10"
-              title="Change Avatar"
-              id="uikit-preview-avatar-button"
-            >
-              <ImageIcon className="h-6 w-6 text-black" />
-            </div>
-          )} */}
         </div>
+        
         {/* Video Preview */}
-        <div className="flex items-center justify-center">
+        <div className="flex justify-center w-full">
           <div
-            className={`mb-4 relative aspect-video rounded-lg border overflow-hidden items-center justify-center ${themeColorClass}`}
+            className={`relative rounded-lg border border-[#4A4A4A] overflow-hidden bg-black`}
             style={{
-              width: isPortraitDevice ? "190px" : "100%",
+              width: isPortraitDevice ? "250px" : "50px",
               aspectRatio: isPortraitDevice ? "3/4" : "16/9",
             }}
             ref={videoParentRef}
           >
-            <video-player-container className="w-full rounded-lg object-cover">
+            <video-player-container className="w-full h-full">
               <video-player
                 ref={videoRef}
-                className={`w-full object-cover rounded-lg ${aspectStyle} mx-auto`}
+                className={`w-full object-cover rounded-2xl ${aspectStyle}`}
                 style={{
                   width: isPortraitDevice ? "190px" : "100%",
                   aspectRatio: isPortraitDevice ? "3/4" : "16/9",
@@ -673,19 +645,17 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
               />
               {!videoState.isStarted && (
                 <div
-                  className={`absolute top-0 left-0 w-full h-full flex items-center justify-center ${themeColorClass}`}
+                  className={`absolute inset-0 flex items-center justify-center text-white/50`}
                 >
-                  <Video className={`h-12 w-12 ${themeColorClass}`} />
+                  <Video className={`h-16 w-16`} />
                 </div>
               )}
             </video-player-container>
 
             {/* Control Buttons Overlay */}
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4">
+            <div className="absolute bottom-0 left-0 right-0 bg-[#F3E8D7] py-3 flex justify-center gap-4 items-center shadow-inner rounded-lg">
               <Button
                 onClick={toggleMic}
-                variant="danger"
-                size="md"
                 id="uikit-preview-mic-button"
                 title={
                   isPlayingRecording || isRecordingVoice
@@ -694,33 +664,31 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
                       ? ""
                       : GRANT_PERMISSION_MESSAGE.microphone
                 }
-                className={`text-white bg-red-500/100 hover:bg-red-600/100`}
+                className={`w-12 h-12 rounded-full bg-gray-600 hover:bg-gray-700 flex items-center justify-center text-white`}
                 disabled={isPlayingRecording || isRecordingVoice}
               >
                 {!isGrantPermission.microphone ? (
-                  <TriangleAlert className={`h-4 w-4`} />
+                  <TriangleAlert className={`h-6 w-6`} />
                 ) : !audioState.isStarted ? (
-                  <Headphones className={`h-4 w-4`} />
+                  <Headphones className={`h-6 w-6`} />
                 ) : audioState.isMuted ? (
-                  <MicOff className={`h-4 w-4`} />
+                  <MicOff className={`h-6 w-6`} />
                 ) : (
-                  <PreviewAnimatedMicVolume localAudio={localAudio} iconColor={"text-white"} />
+                  <PreviewAnimatedMicVolume localAudio={localAudio} iconColor={"text-black"} />
                 )}
               </Button>
               <Button
                 onClick={toggleCamera}
-                variant="danger"
-                size="md"
                 id="uikit-preview-camera-button"
                 title={isGrantPermission.camera ? "" : GRANT_PERMISSION_MESSAGE.camera}
-                className={`text-white bg-red-500/100 hover:bg-red-600/100`}
+                className={`w-12 h-12 rounded-full bg-gray-600 hover:bg-gray-700 flex items-center justify-center text-white`}
               >
                 {!isGrantPermission.camera ? (
-                  <TriangleAlert className={`h-4 w-4`} />
+                  <TriangleAlert className={`h-6 w-6`} />
                 ) : videoState.isStarted ? (
-                  <Video className={`h-4 w-4`} />
+                  <Video className={`h-6 w-6`} />
                 ) : (
-                  <VideoOff className={`h-4 w-4`} />
+                  <VideoOff className={`h-6 w-6`} />
                 )}
               </Button>
               {vbButton}
@@ -728,116 +696,120 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
           </div>
         </div>
 
-        {/* Device Selection */}
-        <div className={`flex justify-between mb-6 ${themeColorClass} bg-white`}>
-          <DeviceSelector
-            value={audioState.selectedSpeaker}
-            onChange={(value) => {
-              setAudioState((prev) => ({ ...prev, selectedSpeaker: value }));
-              DeviceManager.manuallySelectSpeaker(value);
-            }}
-            devices={devices.speakers}
-            disabled={isPlayingRecording || isRecordingVoice || isTestSpeaker}
-            testTitle={isTestSpeaker ? "Stop" : "Test speaker"}
-            deviceType="Speaker"
-            id="uikit-preview-speaker-select"
-            themeColorClass={themeColorClass}
-            iconId="uikit-preview-test-speaker"
-            clickIcon={() => {
-              if (microphoneTesterRef.current) {
-                microphoneTesterRef.current.destroy();
-                microphoneTesterRef.current = undefined;
-              }
-              if (localAudio && !isTestSpeaker) {
-                speakerTesterRef.current = localAudio.testSpeaker({
-                  speakerId:
-                    isMobileDevice() && audioState.selectedSpeaker === "default" ? "" : audioState.selectedSpeaker,
-                });
-              } else {
-                if (speakerTesterRef.current) {
-                  speakerTesterRef.current.stop();
+          <div className="w-full bg-[#2A2E35] rounded-3xl p-10 flex flex-col items-center gap-8 shadow-lg mt-10">
+            <Button
+              onClick={() => {
+                dispatch(
+                  setPreviewAVStatus({
+                    isCameraOn: videoState.isStarted,
+                    isAudioOn: audioState.isStarted,
+                    isMicMuted: audioState.isMuted,
+                  }),
+                );
+                if (audioState.isStarted) {
+                  dispatch(setShowJoinAudioConsent(false));
                 }
-              }
-              setIsTestSpeaker(!isTestSpeaker);
-            }}
-          />
-          <DeviceSelector
-            value={audioState.selectedMic}
-            onChange={handleMicChange}
-            devices={devices.microphones}
-            testTitle={
-              isPlayingRecording ? "Playing recording" : isRecordingVoice ? "Mic recording" : "Test microphone"
-            }
-            disabled={isPlayingRecording || isRecordingVoice}
-            deviceType="Microphone"
-            id="uikit-preview-mic-select"
-            themeColorClass={themeColorClass}
-            iconId="uikit-preview-test-microphone"
-            clickIcon={() => {
-              if (speakerTesterRef.current) {
-                speakerTesterRef.current.destroy();
-                speakerTesterRef.current = undefined;
-              }
-              if (!isPlayingRecording && !isRecordingVoice) {
-                microphoneTesterRef.current = localAudio.testMicrophone({
-                  microphoneId: isMobileDevice() && audioState.selectedMic === "default" ? "" : audioState.selectedMic,
-                  speakerId:
-                    isMobileDevice() && audioState.selectedSpeaker === "default" ? "" : audioState.selectedSpeaker,
-                  recordAndPlay: true,
-                  onAnalyseFrequency: () => {},
-                  onStartRecording: () => {
-                    setIsRecordingVoice(true);
-                  },
-                  onStartPlayRecording: () => {
+                handleJoinSession();
+              }}
+              className="max-w-[500px] bg-[#F59E0B] text-white font-bold py-4 rounded-xl text-lg"
+              id="uikit-preview-join-button"
+              disabled={!isClientInit}
+              title={grantPermissionMessage}
+              autoFocus={!isAllowModifyName}
+            >
+              Join Session
+            </Button>
+
+            {/* Device Selection */}
+            <div className={`flex flex-col gap-4 w-full max-w-[750px]`}>
+              <div className="grid grid-cols-3 gap-4 w-full text-white">
+              <DeviceSelector
+                value={audioState.selectedSpeaker}
+                onChange={(value) => {
+                  setAudioState((prev) => ({ ...prev, selectedSpeaker: value }));
+                  DeviceManager.manuallySelectSpeaker(value);
+                }}
+                devices={devices.speakers}
+                disabled={isPlayingRecording || isRecordingVoice || isTestSpeaker}
+                testTitle={isTestSpeaker ? "Stop" : "Test speaker"}
+                deviceType="Speaker"
+                id="uikit-preview-speaker-select"
+                themeColorClass={themeColorClass}
+                iconId="uikit-preview-test-speaker"
+                clickIcon={() => {
+                  if (microphoneTesterRef.current) {
+                    microphoneTesterRef.current.destroy();
+                    microphoneTesterRef.current = undefined;
+                  }
+                  if (localAudio && !isTestSpeaker) {
+                    speakerTesterRef.current = localAudio.testSpeaker({
+                      speakerId:
+                        isMobileDevice() && audioState.selectedSpeaker === "default" ? "" : audioState.selectedSpeaker,
+                    });
+                  } else {
+                    if (speakerTesterRef.current) {
+                      speakerTesterRef.current.stop();
+                    }
+                  }
+                  setIsTestSpeaker(!isTestSpeaker);
+                }}
+              />
+              <DeviceSelector
+                value={audioState.selectedMic}
+                onChange={handleMicChange}
+                devices={devices.microphones}
+                testTitle={
+                  isPlayingRecording ? "Playing recording" : isRecordingVoice ? "Mic recording" : "Test microphone"
+                }
+                disabled={isPlayingRecording || isRecordingVoice}
+                deviceType="Microphone"
+                id="uikit-preview-mic-select"
+                themeColorClass={themeColorClass}
+                iconId="uikit-preview-test-microphone"
+                clickIcon={() => {
+                  if (speakerTesterRef.current) {
+                    speakerTesterRef.current.destroy();
+                    speakerTesterRef.current = undefined;
+                  }
+                  if (!isPlayingRecording && !isRecordingVoice) {
+                    microphoneTesterRef.current = localAudio.testMicrophone({
+                      microphoneId: isMobileDevice() && audioState.selectedMic === "default" ? "" : audioState.selectedMic,
+                      speakerId:
+                        isMobileDevice() && audioState.selectedSpeaker === "default" ? "" : audioState.selectedSpeaker,
+                      recordAndPlay: true,
+                      onAnalyseFrequency: () => {},
+                      onStartRecording: () => {
+                        setIsRecordingVoice(true);
+                      },
+                      onStartPlayRecording: () => {
+                        setIsRecordingVoice(false);
+                        setIsPlayingRecording(true);
+                      },
+                      onStopPlayRecording: () => {
+                        setIsPlayingRecording(false);
+                      },
+                    });
+                  } else if (isRecordingVoice) {
+                    microphoneTesterRef.current?.stopRecording();
                     setIsRecordingVoice(false);
-                    setIsPlayingRecording(true);
-                  },
-                  onStopPlayRecording: () => {
+                  } else if (isPlayingRecording) {
+                    microphoneTesterRef.current?.stop();
                     setIsPlayingRecording(false);
-                  },
-                });
-              } else if (isRecordingVoice) {
-                microphoneTesterRef.current?.stopRecording();
-                setIsRecordingVoice(false);
-              } else if (isPlayingRecording) {
-                microphoneTesterRef.current?.stop();
-                setIsPlayingRecording(false);
-              }
-            }}
-          />{" "}
-          <DeviceSelector
-            value={videoState.selectedCamera}
-            onChange={handleCameraChange}
-            devices={devices.cameras}
-            deviceType="Camera"
-            id="uikit-preview-camera-select"
-            themeColorClass={themeColorClass}
-          />
-        </div>
-        <div className="flex justify-center items-center py-4 mb-2">
-          <Button
-            onClick={() => {
-              dispatch(
-                setPreviewAVStatus({
-                  isCameraOn: videoState.isStarted,
-                  isAudioOn: audioState.isStarted,
-                  isMicMuted: audioState.isMuted,
-                }),
-              );
-              if (audioState.isStarted) {
-                dispatch(setShowJoinAudioConsent(false));
-              }
-              handleJoinSession();
-            }}
-            className="w-2/3"
-            id="uikit-preview-join-button"
-            disabled={!isClientInit}
-            title={grantPermissionMessage}
-            autoFocus={!isAllowModifyName}
-          >
-            Join Session
-          </Button>
-        </div>
+                  }
+                }}
+              />{" "}
+              <DeviceSelector
+                value={videoState.selectedCamera}
+                onChange={handleCameraChange}
+                devices={devices.cameras}
+                deviceType="Camera"
+                id="uikit-preview-camera-select"
+                themeColorClass={themeColorClass}
+              />
+              <div />
+              </div>
+            </div>
+          </div>
       </div>
 
       {/* Avatar Picker Modal */}
