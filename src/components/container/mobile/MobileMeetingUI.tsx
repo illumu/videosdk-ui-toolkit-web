@@ -474,10 +474,9 @@ const MobileMeetingUI = () => {
             {isRecording && <RecordingNotificationIcon className="text-red-500 animate-pulse ml-1" size="sm" />}
           </div>
 
-          <div className="flex items-center">
             {isSupportLeaveFeature && (
               <button
-                className="text-theme-text-button bg-red-500 p-2 rounded-full"
+                className="fixed bottom-6 right-6 z-50 text-theme-text-button bg-red-500 p-3 rounded-full shadow-lg"
                 onClick={() => {
                   setIsConfirmDialogOpen(!isConfirmDialogOpen);
                 }}
@@ -485,7 +484,6 @@ const MobileMeetingUI = () => {
                 <LogOut size={20} />
               </button>
             )}
-          </div>
 
           <SessionInfoDropdown
             isOpen={sessionUI.isSessionInfoOpen}
