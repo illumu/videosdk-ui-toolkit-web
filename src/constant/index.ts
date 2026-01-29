@@ -20,7 +20,7 @@ export const defaultConfig: CustomizationOptions = {
     },
     audio: {
       enable: true,
-      joinAudioConsent: true,
+      joinAudioConsent: false,
       backgroundNoiseSuppression: true,
       originalSound: true,
       syncButtonsOnHeadset: true,
@@ -30,10 +30,10 @@ export const defaultConfig: CustomizationOptions = {
       enable: true,
     },
     share: {
-      enable: true,
+      enable: false,
     },
     chat: {
-      enable: true,
+      enable: false,
       enableEmoji: true,
     },
     users: {
@@ -66,10 +66,10 @@ export const defaultConfig: CustomizationOptions = {
     },
     preview: {
       enable: true,
-      isAllowModifyName: false,
+      isAllowModifyName: true,
     },
     feedback: {
-      enable: true,
+      enable: false,
     },
     livestream: {
       enable: false,
@@ -99,7 +99,7 @@ export const defaultConfig: CustomizationOptions = {
       enable: true,
     },
     leave: {
-      enable: true,
+      enable: false,
     },
     virtualBackground: {
       enable: true,
@@ -108,7 +108,7 @@ export const defaultConfig: CustomizationOptions = {
       virtualBackgrounds: [],
     },
     header: {
-      enable: true,
+      enable: false,
     },
     footer: {
       enable: true,
@@ -118,7 +118,7 @@ export const defaultConfig: CustomizationOptions = {
       share: { enable: false },
     },
     whiteboard: {
-      enable: true,
+      enable: false,
       enableExport: true,
       enableViewerUserExport: true,
     },

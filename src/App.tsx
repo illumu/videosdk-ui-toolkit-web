@@ -282,7 +282,8 @@ export const SessionApplication = ({
     selectedMic: string;
     selectedSpeaker: string;
   }) => {
-    setIsPreview(false);
+    // TODO: remove this after testing
+    setIsPreview(true);
     setIsLoading(true);
     config.userName = displayName;
 
