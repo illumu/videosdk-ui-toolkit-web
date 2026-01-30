@@ -665,7 +665,7 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
                       : GRANT_PERMISSION_MESSAGE.microphone
                 }
                 className={`w-12 h-12 rounded-full flex items-center justify-center text-white
-                  ${!audioState.isStarted
+                  ${!audioState.isStarted || audioState.isMuted
                     ? "bg-red-500 hover:bg-red-600"
                     : "bg-gray-600 hover:bg-gray-700"}`
                 }
