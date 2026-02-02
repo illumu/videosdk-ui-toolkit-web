@@ -593,10 +593,10 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
     <div className={`min-h-[100dvh] w-full bg-[#1C1C1C] flex flex-col items-center pt-8`}>
       <div className={`w-full ${isMobileDevice() ? "max-w-md" : "max-w-[880px]"} px-6 flex flex-col items-center`}>
         <div className="w-full max-w-[560px] bg-[#2A2E35] rounded-2xl shadow-lg pt-6 pb-2 px-4 mb-6">
-        <h2 className="text-xl font-medium text-center mb-4 text-white tracking-tight" id="uikit-preview-title">
-          What&apos;s your name?
-        </h2>
-        {/* Name and Avatar Input */}
+          <h2 className="text-xl font-medium text-center mb-4 text-white tracking-tight" id="uikit-preview-title">
+            What&apos;s your name?
+          </h2>
+          {/* Name and Avatar Input */}
           <div className={`relative mb-4`}>
             <input
               type="text"
@@ -622,7 +622,7 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
             )}
           </div>
         </div>
-        
+
         {/* Video Preview */}
         <div className="flex justify-center w-full">
           <div
@@ -644,9 +644,7 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
                 }}
               />
               {!videoState.isStarted && (
-                <div
-                  className={`absolute inset-0 flex items-center justify-center text-white/50`}
-                >
+                <div className={`absolute inset-0 flex items-center justify-center text-white/50`}>
                   <Video className={`h-16 w-16`} />
                 </div>
               )}
@@ -665,10 +663,7 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
                       : GRANT_PERMISSION_MESSAGE.microphone
                 }
                 className={`w-12 h-12 rounded-full flex items-center justify-center text-white
-                  ${!audioState.isStarted || audioState.isMuted
-                    ? "bg-red-500 hover:bg-red-600"
-                    : "bg-gray-600 hover:bg-gray-700"}`
-                }
+                  ${!audioState.isStarted || audioState.isMuted ? "bg-red-500 hover:bg-red-600" : "bg-gray-600 hover:bg-gray-700"}`}
                 disabled={isPlayingRecording || isRecordingVoice}
               >
                 {!isGrantPermission.microphone ? (
@@ -686,10 +681,7 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
                 id="uikit-preview-camera-button"
                 title={isGrantPermission.camera ? "" : GRANT_PERMISSION_MESSAGE.camera}
                 className={`w-12 h-12 rounded-full flex items-center justify-center text-white
-                  ${!videoState.isStarted
-                    ? "bg-red-500 hover:bg-red-600"
-                    : "bg-gray-600 hover:bg-gray-700"}`
-                }
+                  ${!videoState.isStarted ? "bg-red-500 hover:bg-red-600" : "bg-gray-600 hover:bg-gray-700"}`}
               >
                 {!isGrantPermission.camera ? (
                   <TriangleAlert className={`h-6 w-6`} />
@@ -704,8 +696,8 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
           </div>
         </div>
 
-          <div className="w-full bg-[#2A2E35] rounded-3xl p-10 flex flex-col items-center gap-5 shadow-lg mt-16">
-            <div className="flex justify-center">
+        <div className="w-full bg-[#2A2E35] rounded-3xl p-10 flex flex-col items-center gap-5 shadow-lg mt-16">
+          <div className="flex justify-center">
             <Button
               onClick={() => {
                 dispatch(
@@ -728,11 +720,11 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
             >
               Join Session
             </Button>
-            </div>
+          </div>
 
-            {/* Device Selection */}
-            <div className={`flex items-center justify-center gap-16 w-full text-white`}>
-              <div className="w-[360px]">
+          {/* Device Selection */}
+          <div className={`flex items-center justify-center gap-16 w-full text-white`}>
+            <div className="w-[360px]">
               <DeviceSelector
                 value={audioState.selectedMic}
                 onChange={handleMicChange}
@@ -752,7 +744,8 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
                   }
                   if (!isPlayingRecording && !isRecordingVoice) {
                     microphoneTesterRef.current = localAudio.testMicrophone({
-                      microphoneId: isMobileDevice() && audioState.selectedMic === "default" ? "" : audioState.selectedMic,
+                      microphoneId:
+                        isMobileDevice() && audioState.selectedMic === "default" ? "" : audioState.selectedMic,
                       speakerId:
                         isMobileDevice() && audioState.selectedSpeaker === "default" ? "" : audioState.selectedSpeaker,
                       recordAndPlay: true,
@@ -777,19 +770,19 @@ const PreviewPage: React.FC<PreviewPageProps> = ({
                   }
                 }}
               />
-              </div>
-              <div className="w-[360px]">
-                <DeviceSelector
-                  value={videoState.selectedCamera}
-                  onChange={handleCameraChange}
-                  devices={devices.cameras}
-                  deviceType="Camera"
-                  id="uikit-preview-camera-select"
-                  themeColorClass={themeColorClass}
-                />
-              </div>
+            </div>
+            <div className="w-[360px]">
+              <DeviceSelector
+                value={videoState.selectedCamera}
+                onChange={handleCameraChange}
+                devices={devices.cameras}
+                deviceType="Camera"
+                id="uikit-preview-camera-select"
+                themeColorClass={themeColorClass}
+              />
             </div>
           </div>
+        </div>
       </div>
 
       {/* Avatar Picker Modal */}

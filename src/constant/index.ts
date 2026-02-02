@@ -99,7 +99,7 @@ export const defaultConfig: CustomizationOptions = {
       enable: true,
     },
     leave: {
-      enable: false,
+      enable: true,
     },
     virtualBackground: {
       enable: true,

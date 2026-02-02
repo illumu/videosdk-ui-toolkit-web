@@ -438,9 +438,7 @@ const MobileMeetingUI = () => {
         <RecordingNotification />
 
         <header
-          className={`uikit-mobile-header ${THEME_COLOR_CLASS} py-2 px-4 flex items-center justify-between absolute top-0 left-0 right-0 shadow-[0_2px_10px_-1px_rgba(0,0,0,0.05)] transition-transform duration-300 ${
-            isControlsVisible ? "translate-y-0" : "-translate-y-full"
-          }`}
+          className={`uikit-mobile-header ${THEME_COLOR_CLASS} py-2 px-4 flex items-center justify-between absolute top-0 left-0 right-0 shadow-[0_2px_10px_-1px_rgba(0,0,0,0.05)] transition-transform duration-300 ${isControlsVisible ? "translate-y-0" : "-translate-y-full"}`}
           style={{ zIndex: 2 }}
           id="uikit-mobile-header"
         >
@@ -474,16 +472,16 @@ const MobileMeetingUI = () => {
             {isRecording && <RecordingNotificationIcon className="text-red-500 animate-pulse ml-1" size="sm" />}
           </div>
 
-            {isSupportLeaveFeature && (
-              <button
-                className="fixed bottom-6 right-6 z-50 text-theme-text-button bg-red-500 p-3 rounded-full shadow-lg"
-                onClick={() => {
-                  setIsConfirmDialogOpen(!isConfirmDialogOpen);
-                }}
-              >
-                <LogOut size={20} />
-              </button>
-            )}
+          {isSupportLeaveFeature && (
+            <button
+              className="fixed bottom-6 right-6 z-50 text-theme-text-button bg-red-500 p-3 rounded-full shadow-lg"
+              onClick={() => {
+                setIsConfirmDialogOpen(!isConfirmDialogOpen);
+              }}
+            >
+              <LogOut size={20} />
+            </button>
+          )}
 
           <SessionInfoDropdown
             isOpen={sessionUI.isSessionInfoOpen}

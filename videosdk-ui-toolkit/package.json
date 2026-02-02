@@ -1,6 +1,6 @@
 {
   "name": "@vinay.kumar.ha/videosdk-ui-toolkit",
-  "version": "2.3.5-1.15",
+  "version": "2.3.5-1.17",
   "description": "The Zoom Video SDK UI toolkit is a prebuilt video chat user interface powered by the Zoom Video SDK.",
   "main": "index.js",
   "types": "index.d.ts",

@@ -47,7 +47,7 @@ const DeviceSelector: React.FC<DeviceSelectorProps> = ({
       <div className="flex flex-col gap-2">
         <div className="relative">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10 text-white">
-          {getDeviceIcon()}
+            {getDeviceIcon()}
           </div>
           <select
             value={value}
