@@ -75,9 +75,7 @@ export const FooterMobile = ({
 
   return (
     <footer
-      className={`uikit-footer-mobile ${THEME_COLOR_CLASS} py-2 px-4 absolute bottom-0 left-0 right-0 shadow-[0_-2px_10px_-1px_rgba(0,0,0,0.05)] transition-transform duration-300 ${
-        sessionUI.isControlsVisible ? "translate-y-0" : "translate-y-full"
-      }`}
+      className={`uikit-footer-mobile ${THEME_COLOR_CLASS} py-2 px-4 absolute bottom-0 left-0 right-0 shadow-[0_-2px_10px_-1px_rgba(0,0,0,0.05)] transition-transform duration-300 "translate-y-0"`}
       style={{ zIndex: 2 }}
     >
       <div className="flex justify-between items-center">

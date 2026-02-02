@@ -438,12 +438,12 @@ const MobileMeetingUI = () => {
         <RecordingNotification />
 
         <header
-          className={`uikit-mobile-header ${THEME_COLOR_CLASS} py-2 px-4 flex items-center justify-between absolute top-0 left-0 right-0 shadow-[0_2px_10px_-1px_rgba(0,0,0,0.05)] transition-transform duration-300 ${isControlsVisible ? "translate-y-0" : "-translate-y-full"}`}
+          className={`uikit-mobile-header ${THEME_COLOR_CLASS} py-2 px-4 flex items-center justify-between absolute top-0 left-0 right-0 shadow-[0_2px_10px_-1px_rgba(0,0,0,0.05)] transition-transform duration-300 "translate-y-0"`}
           style={{ zIndex: 2 }}
           id="uikit-mobile-header"
         >
           <div className="flex items-center gap-2">
-            {isSupportMinimizedView && (
+            {/* {isSupportMinimizedView && (
               <button
                 className="p-2 rounded-full transition-colors duration-200 border border-theme-border"
                 onClick={() => {
@@ -453,14 +453,14 @@ const MobileMeetingUI = () => {
               >
                 <Minimize2 size={18} className="text-theme-text" />
               </button>
-            )}
-            <button className="p-2 rounded-full transition-colors duration-200" onClick={toggleSessionInfo}>
+            )} */}
+            {/* <button className="p-2 rounded-full transition-colors duration-200" onClick={toggleSessionInfo}>
               <Info size={24} />
-            </button>
+            </button> */}
           </div>
 
           <div className="flex items-center justify-center gap-1">
-            <h1 className="text-lg font-semibold truncate max-w-[180px]" title={session?.sessionInfo?.topic}>
+            {/* <h1 className="text-lg font-semibold truncate max-w-[180px]" title={session?.sessionInfo?.topic}>
               {session?.sessionInfo?.topic}
             </h1>
             {liveStreamStatus === LiveStreamStatus.InProgress && <Radio className="text-red-500 animate-pulse mx-2" />}
@@ -469,12 +469,12 @@ const MobileMeetingUI = () => {
                 (<span className="truncate">{currentSubRoom.subsessionName}</span>)
               </div>
             )}
-            {isRecording && <RecordingNotificationIcon className="text-red-500 animate-pulse ml-1" size="sm" />}
+            {isRecording && <RecordingNotificationIcon className="text-red-500 animate-pulse ml-1" size="sm" />} */}
           </div>
 
           {isSupportLeaveFeature && (
             <button
-              className="fixed bottom-6 right-6 z-50 text-theme-text-button bg-red-500 p-3 rounded-full shadow-lg"
+              className="text-theme-text-button bg-red-500 p-2 rounded-full"
               onClick={() => {
                 setIsConfirmDialogOpen(!isConfirmDialogOpen);
               }}
