@@ -45,7 +45,7 @@
     "i18next": "^25.6.3",
     "jsdom": "^27.2.0",
     "jspdf": "^3.0.4",
-    "jsrsasign": "^11.1.0",
+    "jsrsasign": "^11.1.1",
     "lint-staged": "^16.2.7",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.554.0",
