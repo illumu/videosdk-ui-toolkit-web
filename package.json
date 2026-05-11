@@ -51,7 +51,7 @@
     "lucide-react": "^0.554.0",
     "mitt": "^3.0.1",
     "notistack": "^3.0.2",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.14",
     "postcss-prefix-selector": "^2.1.1",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.6.2",
